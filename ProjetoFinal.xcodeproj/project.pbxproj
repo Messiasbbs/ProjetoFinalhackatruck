@@ -14,6 +14,7 @@
 		C04D9DDC2B6ADF5500BB5CF6 /* PhotosDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04D9DDB2B6ADF5500BB5CF6 /* PhotosDayView.swift */; };
 		C04D9DE02B6ADF9500BB5CF6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04D9DDF2B6ADF9500BB5CF6 /* HomeView.swift */; };
 		C04D9DE22B6ADFAA00BB5CF6 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04D9DE12B6ADFAA00BB5CF6 /* NewsView.swift */; };
+		C04D9E022B6C31DF00BB5CF6 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04D9E012B6C31DF00BB5CF6 /* InfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		C04D9DDB2B6ADF5500BB5CF6 /* PhotosDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosDayView.swift; sourceTree = "<group>"; };
 		C04D9DDF2B6ADF9500BB5CF6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C04D9DE12B6ADFAA00BB5CF6 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
+		C04D9E012B6C31DF00BB5CF6 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +43,7 @@
 		C04D9DBF2B6AD32D00BB5CF6 = {
 			isa = PBXGroup;
 			children = (
+				C04D9E012B6C31DF00BB5CF6 /* InfoView.swift */,
 				C04D9DE12B6ADFAA00BB5CF6 /* NewsView.swift */,
 				C04D9DDF2B6ADF9500BB5CF6 /* HomeView.swift */,
 				C04D9DDB2B6ADF5500BB5CF6 /* PhotosDayView.swift */,
@@ -150,6 +153,7 @@
 				C04D9DE02B6ADF9500BB5CF6 /* HomeView.swift in Sources */,
 				C04D9DDC2B6ADF5500BB5CF6 /* PhotosDayView.swift in Sources */,
 				C04D9DE22B6ADFAA00BB5CF6 /* NewsView.swift in Sources */,
+				C04D9E022B6C31DF00BB5CF6 /* InfoView.swift in Sources */,
 				C04D9DCC2B6AD32D00BB5CF6 /* ProjetoFinalApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

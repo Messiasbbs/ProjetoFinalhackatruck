@@ -24,6 +24,11 @@ struct ContentView: View {
                     Label("Foto Do Dia", systemImage: "photo.artframe")
                     
                 }
+            InfoView()
+                .tabItem{
+                    Label("informacoes dos planetas", systemImage: "photo.artframe")
+                    
+                }
            
         
 
