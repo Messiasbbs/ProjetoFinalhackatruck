@@ -8,8 +8,38 @@
 import SwiftUI
 
 struct NewsView: View {
+    @StateObject var viewModel = ViewModel()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            
+            ForEach(viewModel.arrayNoticias, id: \.self){ index in
+                HStack{
+                   
+                    Text(index.titulo!)
+                        .foregroundColor(Color.blue)
+                        .padding(.trailing)
+                    Text(index.url!)
+                        .foregroundColor(Color.blue)
+                        .padding(.trailing)
+                    Text(index.resumo!)
+                        .foregroundColor(Color.blue)
+                        .padding(.trailing)
+                }
+            
+                
+                
+                
+                
+                
+                
+                
+    
+               
+            }
+        }
+        .onAppear(){
+            viewModel.noticias()
+        }
     }
 }
 

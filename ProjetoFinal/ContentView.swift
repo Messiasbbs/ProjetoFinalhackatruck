@@ -26,10 +26,14 @@ struct ContentView: View {
                 }
             InfoView()
                 .tabItem{
-                    Label("informacoes dos planetas", systemImage: "photo.artframe")
+                    Label("", systemImage: "studentdesk")
                     
                 }
-           
+            RocketsView()
+                .tabItem{
+                    Label("foguetes", systemImage: "photo.artframe")
+                    
+                }
         
 
 

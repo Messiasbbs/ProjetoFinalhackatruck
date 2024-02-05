@@ -21,7 +21,9 @@ struct HomeView: View {
             VStack{
                 
                 HStack{
-                    Text("AQUI VAI FICAR A LOGO E O NOME ")
+                    Text("AstroHackaHub")
+                    
+                        
                 }
                 .padding(.top)
                 Spacer()

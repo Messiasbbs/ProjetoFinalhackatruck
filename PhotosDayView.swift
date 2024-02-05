@@ -12,45 +12,42 @@ struct PhotosDayView: View {
     var body: some View {
         ZStack{
                    
-                   ScrollView {
+                   
                        VStack{
                            
                            ForEach(viewModel.arrayPhotosDay, id: \.self){ index in
-                               HStack{
-                                   AsyncImage(url: URL(string: index.hdurl!)) { image in
-                                       image.resizable()
-                                   } placeholder: {
-                                       ProgressView()
+                               ScrollView{
+                                   HStack{
+                                       AsyncImage(url: URL(string: index.hdurl!)) { image in
+                                           image.resizable()
+                                       } placeholder: {
+                                           ProgressView()
+                                       }
+                                       .padding([.top, .leading])
+                                       .frame(width: 300, height: 300)
+                                       Text(index.date!)
+                                           .foregroundColor(Color.blue)
+                                           .padding(.trailing)
                                    }
-                                   .frame(width: 300, height: 300)
-                                   Text(index.date!)
-                                       .foregroundColor(Color.white)
-                                       .padding(.trailing)
+                                   Text(index.title!)
+                                       .font(.title)
+                                       .foregroundColor(Color.blue)
+                                   Spacer()
+                                   Text(index.explanation!)
+                                       .font(Font.custom("MyFont", size: 16))
+                                       .foregroundColor(Color.blue)
+                                       .multilineTextAlignment(.leading)
+                                       .padding(.horizontal)
+                                   
                                }
-                               Text(index.title!)
-                                   .font(.title)
-                                   .foregroundColor(Color.white)
-                               Spacer()
-                               Text(index.explanation!)
-                                   .font(Font.custom("MyFont", size: 16))
-                                   .foregroundColor(Color.white)
-                                   .multilineTextAlignment(.leading)
-                                   .padding(.horizontal)
                                
-                               
-                               
-                               
-                               
-                               
-                               
-                   
                               
                            }
                        }
                        .onAppear(){
-                           viewModel.fetch()
+                           viewModel.fotos()
                        }
-                   }
+                   
                   
                    
                }.ignoresSafeArea()

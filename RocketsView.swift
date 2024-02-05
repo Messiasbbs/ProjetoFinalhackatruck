@@ -1,18 +1,18 @@
 //
-//  InfoView.swift
+//  RocketsView.swift
 //  ProjetoFinal
 //
-//  Created by Turma02-19 on 01/02/24.
+//  Created by Turma02-19 on 05/02/24.
 //
 
 import SwiftUI
 
-struct InfoView: View {
+struct RocketsView: View {
     @StateObject var viewModel = ViewModel()
     var body: some View {
         VStack{
             
-            ForEach(viewModel.arrayInfo, id: \.self){ index in
+            ForEach(viewModel.arrayFoguetes, id: \.self){ index in
                 HStack{
                    
                     Text(index.titulo!)
@@ -38,13 +38,13 @@ struct InfoView: View {
             }
         }
         .onAppear(){
-            viewModel.info()
+            viewModel.foguetes()
         }
     }
 }
 
-struct InfoView_Previews: PreviewProvider {
+struct RocketsView_Previews: PreviewProvider {
     static var previews: some View {
-        InfoView()
+        RocketsView()
     }
 }
