@@ -22,6 +22,7 @@ class ViewModel : ObservableObject {
                 
                 DispatchQueue.main.async {
                    // self?.arrayPhotosDay = parsed
+                    self?.arrayPhotosDay = []
                     self?.arrayPhotosDay.append(parsed)
                 }
             }catch{
@@ -43,11 +44,11 @@ class ViewModel : ObservableObject {
             }
             
             do {
-                let parsed = try JSONDecoder().decode(Foguetes.self, from: data)
+                let parsed = try JSONDecoder().decode([Foguetes].self, from: data)
                 
                 DispatchQueue.main.async {
-                   // self?.arrayPhotosDay = parsed
-                    self?.arrayFoguetes.append(parsed)
+                   self?.arrayFoguetes = parsed
+                   // self?.arrayFoguetes.append(parsed)
                 }
             }catch{
                 print(error)
@@ -91,11 +92,11 @@ class ViewModel : ObservableObject {
             }
             
             do {
-                let parsed = try JSONDecoder().decode(Noticias.self, from: data)
+                let parsed = try JSONDecoder().decode([Noticias].self, from: data)
                 
                 DispatchQueue.main.async {
-                   // self?.arrayPhotosDay = parsed
-                    self?.arrayNoticias.append(parsed)
+                   self?.arrayNoticias = parsed
+                    //self?.arrayNoticias.append(parsed)
                 }
             }catch{
                 print(error)

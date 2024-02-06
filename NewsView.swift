@@ -8,38 +8,65 @@
 import SwiftUI
 
 struct NewsView: View {
+    @State var aux: Noticias?
+    @State var showModal: Bool = false
     @StateObject var viewModel = ViewModel()
     var body: some View {
-        VStack{
-            
-            ForEach(viewModel.arrayNoticias, id: \.self){ index in
-                HStack{
-                   
-                    Text(index.titulo!)
-                        .foregroundColor(Color.blue)
-                        .padding(.trailing)
-                    Text(index.url!)
-                        .foregroundColor(Color.blue)
-                        .padding(.trailing)
-                    Text(index.resumo!)
-                        .foregroundColor(Color.blue)
-                        .padding(.trailing)
+        NavigationStack{
+            ZStack{
+                
+                Rectangle()
+                            .fill(
+                                LinearGradient(
+                                    gradient: Gradient(colors: [.black, .blue]),
+                                    startPoint: .top,
+                                    endPoint: .trailing)
+                            )
+                            
+                ScrollView{
+                    VStack {
+                                                   
+                                                ForEach(viewModel.arrayNoticias, id: \.self){ index in
+                                                    
+                                                    HStack{
+                                                        AsyncImage(url: URL(string: index.url!),scale: 10)
+                                                            
+                                                        
+                                                        Text(index.titulo!)
+                                                        
+                                                            .multilineTextAlignment(.leading)
+                                                            .foregroundColor(.white)
+                                                            .frame(maxWidth: 260)
+                                                            
+                                                    }.onTapGesture {
+                                                        
+                                                        aux = index
+                                                        
+                                                        print(index)
+                                                        
+                                                        self.showModal.toggle()
+                                                        
+                                                    }
+                                                }
+                                                
+                                                Spacer()
+                                                    
+                                            }.sheet(isPresented: $showModal){
+                                                swiftView(aux: $aux)
+                                                }
+
+                    
                 }
-            
-                
-                
-                
-                
-                
-                
-                
-    
-               
-            }
+                .padding()
+                }.onAppear(){
+                    viewModel.noticias()
+                           
+                       
+                      
+                       
+                   }.ignoresSafeArea()
         }
-        .onAppear(){
-            viewModel.noticias()
-        }
+        
     }
 }
 

@@ -9,36 +9,62 @@ import SwiftUI
 
 struct RocketsView: View {
     @StateObject var viewModel = ViewModel()
+    @State var aux: Foguetes?
+    @State var showModal: Bool = false
     var body: some View {
-        VStack{
-            
-            ForEach(viewModel.arrayFoguetes, id: \.self){ index in
-                HStack{
-                   
-                    Text(index.titulo!)
-                        .foregroundColor(Color.blue)
-                        .padding(.trailing)
-                    Text(index.url!)
-                        .foregroundColor(Color.blue)
-                        .padding(.trailing)
-                    Text(index.resumo!)
-                        .foregroundColor(Color.blue)
-                        .padding(.trailing)
+        NavigationStack{
+            ZStack{
+                
+                Rectangle()
+                            .fill(
+                                LinearGradient(
+                                    gradient: Gradient(colors: [.black, .blue]),
+                                    startPoint: .top,
+                                    endPoint: .trailing)
+                            )
+                            
+                ScrollView{
+                    VStack {
+                                                   
+                                                ForEach(viewModel.arrayFoguetes, id: \.self){ index in
+                                                    
+                                                    HStack{
+                                                        AsyncImage(url: URL(string: index.url!),scale: 10)
+                                                            
+                                                        
+                                                        Text(index.titulo!)
+                                                        
+                                                            .multilineTextAlignment(.leading)
+                                                            .foregroundColor(.white)
+                                                            .frame(maxWidth: 260)
+                                                            
+                                                    }.onTapGesture {
+                                                        
+                                                        aux = index
+                                                        
+                                                        print(index)
+                                                        
+                                                        self.showModal.toggle()
+                                                        
+                                                    }
+                                                }
+                                                
+                                                Spacer()
+                                                    
+                                            }.sheet(isPresented: $showModal){
+                                                swiftfogueteView(aux: $aux)
+                                                }
+
+                    
                 }
-            
-                
-                
-                
-                
-                
-                
-                
-    
-               
-            }
-        }
-        .onAppear(){
-            viewModel.foguetes()
+                .padding()
+                }.onAppear(){
+                    viewModel.foguetes()
+                           
+                       
+                      
+                       
+                   }.ignoresSafeArea()
         }
     }
 }

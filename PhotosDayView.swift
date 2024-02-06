@@ -9,44 +9,54 @@ import SwiftUI
 
 struct PhotosDayView: View {
     @StateObject var viewModel = ViewModel()
+  //  @State var teste: PhotosDAY
     var body: some View {
         ZStack{
-                   
-                   
-                       VStack{
-                           
-                           ForEach(viewModel.arrayPhotosDay, id: \.self){ index in
-                               ScrollView{
-                                   HStack{
-                                       AsyncImage(url: URL(string: index.hdurl!)) { image in
-                                           image.resizable()
-                                       } placeholder: {
-                                           ProgressView()
-                                       }
-                                       .padding([.top, .leading])
-                                       .frame(width: 300, height: 300)
-                                       Text(index.date!)
-                                           .foregroundColor(Color.blue)
-                                           .padding(.trailing)
-                                   }
-                                   Text(index.title!)
-                                       .font(.title)
-                                       .foregroundColor(Color.blue)
-                                   Spacer()
-                                   Text(index.explanation!)
-                                       .font(Font.custom("MyFont", size: 16))
-                                       .foregroundColor(Color.blue)
-                                       .multilineTextAlignment(.leading)
-                                       .padding(.horizontal)
-                                   
-                               }
-                               
-                              
-                           }
-                       }
-                       .onAppear(){
-                           viewModel.fotos()
-                       }
+            
+            Rectangle()
+                        .fill(
+                            LinearGradient(
+                                gradient: Gradient(colors: [.black, .blue]),
+                                startPoint: .top,
+                                endPoint: .trailing)
+                        )
+                        
+            ScrollView{
+                VStack{
+                    ForEach(viewModel.arrayPhotosDay, id: \.self){ foto in
+                        
+                            HStack{
+                                AsyncImage(url: URL(string: foto.hdurl!)) { image in
+                                    image.resizable()
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                                .padding([.top, .leading])
+                                .frame(width: 300, height: 300)
+                                Text(foto.date!)
+                                    .foregroundColor(Color.white)
+                                    .padding(.trailing)
+                            }
+                            Text(foto.title!)
+                                .font(.title)
+                                .foregroundColor(Color.white)
+                            Spacer()
+                            Text(foto.explanation!)
+                                .font(Font.custom("MyFont", size: 16))
+                                .foregroundColor(Color.white)
+                                .multilineTextAlignment(.leading)
+                                .padding(.horizontal)
+                            
+                       
+                        
+                       
+                    }
+                }
+                
+                }
+            }.onAppear(){
+                viewModel.fotos()
+                       
                    
                   
                    
@@ -60,3 +70,4 @@ struct PhotosDayView_Previews: PreviewProvider {
         PhotosDayView()
     }
 }
+//teste: PhotosDAY(date: "1", explanation: "2", hdurl: "3", title: "4", link: "5"

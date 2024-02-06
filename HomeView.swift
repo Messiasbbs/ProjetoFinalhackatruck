@@ -13,7 +13,7 @@ struct HomeView: View {
             Rectangle()
                 .fill(
                     LinearGradient(
-                        gradient: Gradient(colors: [.purple, .blue]),
+                        gradient: Gradient(colors: [.black, .blue,]),
                         startPoint: .top,
                         endPoint: .trailing)
                 )
@@ -21,7 +21,7 @@ struct HomeView: View {
             VStack{
                 
                 HStack{
-                    Text("AstroHackaHub")
+                    Text("AstroHackah")
                     
                         
                 }
