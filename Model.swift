@@ -14,6 +14,7 @@ struct Foguetes: Decodable, Hashable {
     let url:  String?
     let resumo: String?
     let link: String?
+    
  }
 struct Noticias: Decodable, Hashable {
     let titulo: String?

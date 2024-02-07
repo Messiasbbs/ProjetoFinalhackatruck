@@ -15,13 +15,7 @@ struct RocketsView: View {
         NavigationStack{
             ZStack{
                 
-                Rectangle()
-                            .fill(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [.black, .blue]),
-                                    startPoint: .top,
-                                    endPoint: .trailing)
-                            )
+                AsyncImage(url: URL(string: "https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg"))
                             
                 ScrollView{
                     VStack {

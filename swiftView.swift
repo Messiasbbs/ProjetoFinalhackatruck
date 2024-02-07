@@ -15,13 +15,18 @@ struct swiftView: View {
             if(aux != nil){
                 Text(aux!.titulo!)
                     .font(.title3)
-                    .foregroundColor(Color.blue)
+                    .foregroundColor(Color.black)
+                    .padding(.bottom)
                 Text(aux!.resumo!)
-                    .font(.title3)
-                    .foregroundColor(Color.blue)
+                    .foregroundColor(Color.black)
+                    .padding(.bottom)
+        
+                Text("Link para materia:")
+                        .foregroundColor(Color.black)
                 Text(aux!.link!)
-                    .font(.title3)
-                    .foregroundColor(Color.blue)
+                        .foregroundColor(Color.blue)
+                
+                
                     
             }
             

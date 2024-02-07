@@ -8,37 +8,47 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var tabSelected: Tab = .globe
+    
+    init(){
+        UITabBar.appearance().isHidden = true
+    }
+    
     var body: some View {
         
         TabView{
-            HomeView()
-                .tabItem{
-                    Label("Inicio", systemImage: "network")
+            ZStack{
+                TabView(selection: $tabSelected){
+                    ForEach(Tab.allCases, id: \.rawValue){ tab in
+                        HStack{
+                            if(tabSelected == .globe){
+                                HomeView()
+                            }
+                            if(tabSelected == .noticia){
+                                NewsView()
+                            }
+                            if(tabSelected == .photo){
+                                PhotosDayView()
+                            }
+                            if(tabSelected == .info){
+                                InfoView()
+                            }
+                            if(tabSelected == .foguete){
+                                RocketsView()
+                            }
+                        }
+                        .tag(tab)
+                    }
                 }
-            NewsView()
-                .tabItem{
-                    Label("Noticias", systemImage: "newspaper")
-                }
-            PhotosDayView()
-                .tabItem{
-                    Label("Foto Do Dia", systemImage: "photo.artframe")
+                VStack{
+                    Spacer()
+                    CustomTabBar(selectedTab: $tabSelected)
                     
                 }
-            InfoView()
-                .tabItem{
-                    Label("", systemImage: "text.book.closed.fill")
-                    
-                }
-            RocketsView()
-                .tabItem{
-                    Label("", image: "icons8-rocket-26 (2)")
-                    
-                }
-        
-
+            }
+            
 
         }
-        .accentColor(Color.yellow)
         
         
     }
@@ -47,5 +57,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewInterfaceOrientation(.portrait)
     }
 }

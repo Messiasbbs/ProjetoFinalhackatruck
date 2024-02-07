@@ -14,48 +14,44 @@ struct PhotosDayView: View {
     var body: some View {
         ZStack{
             
-            LinearGradient(gradient: Gradient(colors: [Color.black, Color.blue, Color.purple, Color.black]), startPoint: .top, endPoint: .bottom)
-                     .mask(
-                         Circle()
-                             .frame(width: 1000, height: 1000)
-                     )
-                     
-                     
-                     .animation(Animation.easeInOut(duration: 10).repeatForever(autoreverses: true))
-                     .onAppear() {
-                         self.isAnimating = true
-                     }
+            AsyncImage(url: URL(string: "https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg"))
             ScrollView{
                 VStack{
-                    ForEach(viewModel.arrayPhotosDay, id: \.self){ foto in
-                        
-                            HStack{
-                                AsyncImage(url: URL(string: foto.hdurl!)) { image in
-                                    image.resizable()
-                                } placeholder: {
-                                    ProgressView()
-                                }
-                                .padding([.top, .leading])
-                                .frame(width: 300, height: 300)
-                                Text(foto.date!)
-                                    .foregroundColor(Color.white)
-                                    .padding(.trailing)
-                            }
-                            Text(foto.title!)
-                                .font(.title)
-                                .foregroundColor(Color.white)
-                            Spacer()
-                            Text(foto.explanation!)
-                                .font(Font.custom("MyFont", size: 16))
-                                .foregroundColor(Color.white)
-                                .multilineTextAlignment(.leading)
-                                .padding(.horizontal)
-                            
-                       
-                        
-                       
-                    }
-                }
+                                    ForEach(viewModel.arrayPhotosDay, id: \.self){ foto in
+                                        
+                                        VStack{
+                                            
+                                            AsyncImage(url: URL(string: foto.hdurl!)) { image in
+                                                image.resizable()
+                                            } placeholder: {
+                                                ProgressView()
+                                            }
+                                            .padding([.top, .leading])
+                                            .frame(width: 280, height: 280)
+                                            .multilineTextAlignment(.center)
+                                            
+                                            Text(foto.date!)
+                                                .font(.title)
+                                                .fontWeight(.bold)
+                                                .foregroundColor(Color.white)
+                                                .padding(.trailing)
+                                            
+                                        }
+                                        Text(foto.title!)
+                                            .font(.title)
+                                            .foregroundColor(Color.white)
+                                            .frame(maxWidth: 360)
+                                        //Spacer()
+                                        Text(foto.explanation!)
+                                            .font(Font.custom("MyFont", size: 16))
+                                            .fontWeight(.bold)
+                                            .foregroundColor(Color.white)
+                                            .multilineTextAlignment(.leading)
+                                            .frame(maxWidth: 360)
+                                        
+                                    }.padding()
+                                    
+                                }.padding()
                 
                 }
             }.ignoresSafeArea()

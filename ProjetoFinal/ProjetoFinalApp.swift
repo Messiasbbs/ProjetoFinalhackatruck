@@ -11,7 +11,7 @@ import SwiftUI
 struct ProjetoFinalApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Iniciar()
         }
     }
 }

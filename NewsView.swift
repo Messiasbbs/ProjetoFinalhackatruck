@@ -14,14 +14,8 @@ struct NewsView: View {
     var body: some View {
         NavigationStack{
             ZStack{
+                AsyncImage(url: URL(string: "https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg"))
                 
-                Rectangle()
-                            .fill(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [.black, .blue]),
-                                    startPoint: .top,
-                                    endPoint: .trailing)
-                            )
                             
                 ScrollView{
                     VStack {
