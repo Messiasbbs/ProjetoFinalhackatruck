@@ -58,13 +58,10 @@ struct NewsView: View {
                     
                 }
                 .padding()
-                }.onAppear(){
+                }.ignoresSafeArea().onAppear(){
                     viewModel.noticias()
-                           
                        
-                      
-                       
-                   }.ignoresSafeArea()
+                   }
         }
         
     }

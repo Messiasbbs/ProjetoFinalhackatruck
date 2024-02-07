@@ -31,7 +31,7 @@ struct ContentView: View {
                 }
             RocketsView()
                 .tabItem{
-                    Label("foguetes", image: "icons8-rocket-26 (2)")
+                    Label("", image: "icons8-rocket-26 (2)")
                     
                 }
         

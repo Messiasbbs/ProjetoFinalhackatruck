@@ -8,45 +8,50 @@
 import SwiftUI
 
 struct HomeView: View {
+    //@State private var rotation: Double = 0
+    @State private var isRotating = false
     var body: some View {
-        ZStack{
-            Rectangle()
-                .fill(
-                    LinearGradient(
-                        gradient: Gradient(colors: [.black, .blue,]),
-                        startPoint: .top,
-                        endPoint: .trailing)
-                )
+        GeometryReader{ g in
+            ZStack{
                 
-            VStack{
+                Color.black
                 
-                HStack{
-                    Text("AstroHackah")
-                    
+                Image("foto1terra") // Substitua "planet" pelo nome da sua imagem do planeta
+                    .resizable()
+                    .scaledToFill()
+                    .padding(.top)
+                    .ignoresSafeArea()
+                    .frame(width: g.size.width, height: g.size.height)
+                    .rotationEffect(.degrees(isRotating ? 360 : 0))
+                    .animation(Animation.linear(duration: 35).repeatForever(autoreverses: false))
+                    .onAppear() {
+                        self.isRotating = true
                         
-                }
-                .padding(.top)
-                Spacer()
-                HStack{
-                    ScrollView(.horizontal) {
-                        HStack(spacing: 20) {
-                            ForEach(0..<10) {
-                                Text("Item \($0)")
-                                    .foregroundStyle(.white)
-                                    .font(.largeTitle)
-                                    .frame(width: 100, height: 100)
-                                    .background(.red)
-                            }
-                        }
                     }
-                }
-                .padding(.horizontal)
-                Spacer()
+                
+                VStack{
+                    
+                    HStack{
+                        Image("logo hackatruck")
+                            .resizable()
+                            .frame(width:100, height: 100 )
+                        
+                        
+                        
+                    }
+                    
+                    Spacer()
+                    VStack{
+                        
+                    }
+                    .padding(.horizontal)
+                    Spacer()
+                    
+                }.padding(10)
                 
             }
-            
+            .ignoresSafeArea()
         }
-        .ignoresSafeArea()
     }
     
     struct HomeView_Previews: PreviewProvider {

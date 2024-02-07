@@ -58,13 +58,13 @@ struct RocketsView: View {
                     
                 }
                 .padding()
-                }.onAppear(){
+                }.ignoresSafeArea().onAppear(){
                     viewModel.foguetes()
                            
                        
                       
                        
-                   }.ignoresSafeArea()
+                   }
         }
     }
 }

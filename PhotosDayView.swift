@@ -9,18 +9,22 @@ import SwiftUI
 
 struct PhotosDayView: View {
     @StateObject var viewModel = ViewModel()
+    @State private var isAnimating = false
   //  @State var teste: PhotosDAY
     var body: some View {
         ZStack{
             
-            Rectangle()
-                        .fill(
-                            LinearGradient(
-                                gradient: Gradient(colors: [.black, .blue]),
-                                startPoint: .top,
-                                endPoint: .trailing)
-                        )
-                        
+            LinearGradient(gradient: Gradient(colors: [Color.black, Color.blue, Color.purple, Color.black]), startPoint: .top, endPoint: .bottom)
+                     .mask(
+                         Circle()
+                             .frame(width: 1000, height: 1000)
+                     )
+                     
+                     
+                     .animation(Animation.easeInOut(duration: 10).repeatForever(autoreverses: true))
+                     .onAppear() {
+                         self.isAnimating = true
+                     }
             ScrollView{
                 VStack{
                     ForEach(viewModel.arrayPhotosDay, id: \.self){ foto in
@@ -54,14 +58,14 @@ struct PhotosDayView: View {
                 }
                 
                 }
-            }.onAppear(){
+            }.ignoresSafeArea()
+.onAppear(){
                 viewModel.fotos()
                        
                    
                   
                    
-               }.ignoresSafeArea()
-
+               }
     }
 }
 

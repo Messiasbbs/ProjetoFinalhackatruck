@@ -58,13 +58,13 @@ struct InfoView: View {
                     
                 }
                 .padding()
-                }.onAppear(){
+                }.ignoresSafeArea().onAppear(){
                     viewModel.info()
                            
                        
                       
                        
-                   }.ignoresSafeArea()
+                   }
         }
     }
 }
