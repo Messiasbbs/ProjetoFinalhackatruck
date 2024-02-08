@@ -15,14 +15,15 @@ struct RocketsView: View {
         NavigationStack{
             ZStack{
                 
-                AsyncImage(url: URL(string: "https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg"))
+                Image("fundo")
+                    .resizable()
                             
                 ScrollView{
                     VStack {
-                                                   
+                                    
                                                 ForEach(viewModel.arrayFoguetes, id: \.self){ index in
                                                     
-                                                    HStack{
+                                                    VStack{
                                                         AsyncImage(url: URL(string: index.url!),scale: 10)
                                                             
                                                         

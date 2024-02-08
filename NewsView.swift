@@ -14,7 +14,9 @@ struct NewsView: View {
     var body: some View {
         NavigationStack{
             ZStack{
-                AsyncImage(url: URL(string: "https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg"))
+                
+                Image("fundo")
+                    .resizable()
                 
                             
                 ScrollView{
@@ -22,12 +24,12 @@ struct NewsView: View {
                                                    
                                                 ForEach(viewModel.arrayNoticias, id: \.self){ index in
                                                     
-                                                    HStack{
+                                                    VStack{
                                                         AsyncImage(url: URL(string: index.url!),scale: 10)
                                                             
                                                         
                                                         Text(index.titulo!)
-                                                        
+                                                            .font(.system(size: 15))
                                                             .multilineTextAlignment(.leading)
                                                             .foregroundColor(.white)
                                                             .frame(maxWidth: 260)

@@ -12,56 +12,50 @@ struct InfoView: View {
     @State var showModal: Bool = false
     @StateObject var viewModel = ViewModel()
     var body: some View {
-        NavigationStack{
-            ZStack{
-                AsyncImage(url: URL(string: "https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg"))
-                
-                            
-                ScrollView{
-                    VStack {
-                                                   
-                                                ForEach(viewModel.arrayInfo, id: \.self){ inf in
-                                                    
-                                                    HStack{
-                                                        AsyncImage(url: URL(string: inf.url!),scale: 10)
-                                                            
-                                                        
-                                                        Text(inf.titulo!)
-                                                        
-                                                            .multilineTextAlignment(.leading)
-                                                            .foregroundColor(.white)
-                                                            .frame(maxWidth: 260)
-                                                            
-                                                    }.onTapGesture {
-                                                        
-                                                        aux = inf
-                                                        
-                                                        print(inf)
-                                                        
-                                                        self.showModal.toggle()
-                                                        
-                                                    }
-                                                }
-                                                
-                                                Spacer()
-                                                    
-                                            }.sheet(isPresented: $showModal){
-                                                swiftinfoView(aux: $aux)
-                                                }
-
-                    
+        ZStack{
+                        Image("fundo")
+                            .resizable()
+                                    
+                        ScrollView{
+                            VStack {
+                                Text("Planetas 🌎")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 50))
+                                    .fontWeight(.semibold)
+                                Text("")
+                                Text("")
+                                ForEach(viewModel.arrayInfo, id: \.self){ inf in
+                                VStack{
+                                    Text(inf.titulo!)
+                                        .font(.system(size: 30))
+                                        .foregroundColor(.white)
+                                        .frame(maxWidth: 260)
+                                    }.onTapGesture {
+                                        aux = inf
+                                        print(inf)
+                                        self.showModal.toggle()
+                                    }
+                                    Text("")
+                                }
+                                Spacer()
+                            }.sheet(isPresented: $showModal){
+                                swiftinfoView(aux: $aux)
+                                    .presentationDetents([.fraction(0.9)])
+                                    .presentationDragIndicator(.visible)
+                                
+                            }
+                        }
+                        .padding()
+                        }.ignoresSafeArea().onAppear(){
+                            viewModel.info()
+                                   
+                               
+                              
+                               
+                           }
                 }
-                .padding()
-                }.ignoresSafeArea().onAppear(){
-                    viewModel.info()
-                           
-                       
-                      
-                       
-                   }
         }
-    }
-}
+    
 
 struct InfoView_Previews: PreviewProvider {
     static var previews: some View {

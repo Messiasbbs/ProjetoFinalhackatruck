@@ -1,5 +1,5 @@
 //
-//  swiftView.swift
+//  SwiftfogueteUIView.swift
 //  ProjetoFinal
 //
 //  Created by Turma02-19 on 06/02/24.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct swiftView: View {
-    @Binding var aux: Noticias?
+struct swiftfogueteView: View {
+    @Binding var aux: Foguetes?
     
     var body: some View {
         VStack{
@@ -38,7 +38,6 @@ struct swiftView: View {
         
         
         
+        
     }
 }
-
-

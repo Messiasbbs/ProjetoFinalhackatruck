@@ -1,5 +1,5 @@
 //
-//  swiftView.swift
+//  SwiftinfoView.swift
 //  ProjetoFinal
 //
 //  Created by Turma02-19 on 06/02/24.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct swiftView: View {
-    @Binding var aux: Noticias?
+struct swiftinfoView: View {
+    @Binding var aux: Info?
     
     var body: some View {
         VStack{
@@ -29,16 +29,15 @@ struct swiftView: View {
                         Spacer()
                         Text(aux!.resumo!)
                         Text("")
-                        Link("saiba mais", destination: URL(string: aux!.link!)!)
+                        Link("Mais informacoes sobre este planeta", destination: URL(string: aux!.link!)!)
                             .font(.system(size: 20))
-                        
+                        Text("")
                     }
                     
                 }
         
         
         
+        
     }
 }
-
-

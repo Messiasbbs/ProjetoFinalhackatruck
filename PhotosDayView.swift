@@ -10,11 +10,14 @@ import SwiftUI
 struct PhotosDayView: View {
     @StateObject var viewModel = ViewModel()
     @State private var isAnimating = false
+    
+    
   //  @State var teste: PhotosDAY
     var body: some View {
         ZStack{
             
-            AsyncImage(url: URL(string: "https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg"))
+            Image("fundo")
+                .resizable()
             ScrollView{
                 VStack{
                                     ForEach(viewModel.arrayPhotosDay, id: \.self){ foto in

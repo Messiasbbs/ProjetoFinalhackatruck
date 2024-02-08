@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var tabSelected: Tab = .globe
-    
+    @StateObject var viewModel = ViewModel()
     init(){
         UITabBar.appearance().isHidden = true
     }
@@ -48,6 +48,18 @@ struct ContentView: View {
             }
             
 
+        }.onAppear(){
+            
+            viewModel.fotos()
+            viewModel.FUNCIONA()
+            
+            Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { t in
+                
+                viewModel.pust(PhotosDAY2(date: nil, explanation: viewModel.arrayPhotosDay.last?.explanation, hdurl: nil, title: viewModel.arrayPhotosDay.last?.title))
+                
+            
+                print(viewModel.arrayPhotosDay[0].explanation!)
+            }
         }
         
         
